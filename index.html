@@ -1,1 +1,33 @@
-{\rtf1}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/sytle.css">
+    <title> Pokeomon | Guess Who </title>
+</head>
+<body>
+    <div class="wrapper">
+        <div id="start-screen" class="start">
+            <h1>Can you guess all the Pokemon?</h1>
+            <p> 
+                Think you know all the Pokemon? <br>
+                Test your knowlege and find out! <br>
+                Incorrect answer will penalize your score and time <br>
+                Gotta Guess 'Em All!
+            </p>
+            <button id="start">Start Quiz</button>
+        </div>
+
+        <div id="questions" class="hide">
+            <h2 id="question-title"></h2>
+            <div id="choices" class="choices"></div>
+        </div>
+    
+        <div class="timer">Time: <span id="time">0</span></div>
+
+    <script src="./assets/js/script.js"> </script>
+    <script src="./assets/js/questions.js"></script>
+</body>
+</html>
