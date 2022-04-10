@@ -11,7 +11,7 @@
 <body>
     <!-- Default is to show this when page loads -->
     <!-- Use IDs to target, classes to show/hide -->
-    <div id="start-menu" class="hidden">
+    <div id="start-menu" class="show">
         <h1>Can you guess all the Pokemon?</h1>
         <p> 
             Think you know all the Pokemon? <br>
@@ -23,8 +23,8 @@
     </div>
 
 
-    <!-- change to class hidden -->
-    <div class="container show"> 
+    <!-- Default is to be hidden -->
+    <div class="container hidden"> 
         <div class="title-section">
             <div class="question-section"> Ask your question</div>
         </div>
@@ -34,7 +34,8 @@
             <button class="choice-section button"> Choice 1</button>
             <button class="choice-section button"> Choice 1</button>
         </div>
-        <div class="timer hidden"></div>
+        <!-- Timer -->
+        <div id="timer">Time Remaining: <span id="timeRemaining"></span></div>
     </div>
 
     
