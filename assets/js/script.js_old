@@ -1,0 +1,78 @@
+// Variables
+startButton = document.querySelector("#start")
+timeEl = document.querySelector("#time")
+questionSection = document.querySelector("#questions")
+startSection = document.querySelector("#start-screen")
+question = document.querySelector("#question-title")
+questionChoices = document.querySelector("#choices")
+answers = document.querySelector(".answers")
+
+
+// Timer 
+secondsLeft = 10 * 10;  // Change to questions.lenth later
+
+// Index for questions
+questionsIndex = 0;
+
+// list of all questions, choices, and answers
+var questions = [
+    {
+        title: "Who's that Pokemon?",
+        
+        choices: ["Pikachu", "Bulbasaur", "Charmander", "Squirtle"],
+        answer: "Pikachu"
+    },
+    {
+        title: "Who's that Pokemon?",
+        choices: ["Pikachu", "Bulbasaur", "Charmander", "Squirtle"],
+        answer: "Charmander"
+    },
+    {
+        title: "Who's that Pokemon?",
+        choices: ["Pikachu", "Bulbasaur", "Charmander", "Squirtle"],
+        answer: "Squirtle"
+    },
+    ];
+
+
+// Checking Question Indexing
+console.log(questions[0].answer);
+
+// Function for listening for click, then do something
+startButton.addEventListener("click", changeClass)
+
+//  Start Timer
+function setTime() {
+    // Sets interval in variable
+    var timerInterval = setInterval(function() {
+        secondsLeft--;
+        timeEl.textContent = secondsLeft;
+    
+        if(secondsLeft === 0) {
+        // Stops execution of action at set interval
+        clearInterval(timerInterval);}
+    // 1000ms / 1s for delay
+    }, 1000)
+}
+
+// Hide Start Screen
+function changeClass () {
+    // Changes the class of the start screen from show to hide
+    startSection.setAttribute("class", "hide")
+    // Changes the class of the question section from hide to show
+    questionSection.setAttribute("class", "show")
+}
+
+
+// Show Question
+question.textContent = questions[0].title; 
+
+// Create, Format, Placement of choices
+// Create
+var choiceButton = document.createElement("button")
+// Format
+choiceButton.setAttribute("class", "answers")
+// choiceButton.setAttribute("value", questions[0].choices[1])
+// Placement
+questionChoices.append(choiceButton);
+answer.textContent = questions[0].choices;

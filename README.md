@@ -21,3 +21,18 @@ Save High Score
 - Initial
 - Score
 
+
+
+# Notes and Articles
+Looping thru questions
+ - https://www.youtube.com/watch?v=LQGTb112N_c
+
+Great explanation
+ - https://www.youtube.com/watch?v=riDzcEQbX6k
+
+
+04-Web-API
+Change class with setAttribute
+ - Activity 11-Ins_Event-Listener
+
+ 
