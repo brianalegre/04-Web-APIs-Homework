@@ -35,4 +35,18 @@ Great explanation
 Change class with setAttribute
  - Activity 11-Ins_Event-Listener
 
- 
+
+Main page shows
+- Some Text
+- Start Button
+
+Start Button Click
+- Question shows
+- 4 choices 
+- user picks
+  - Show Correct answer and picture
+  - state if correct or wrong
+  - if wrong, minus time/score
+  - go to next Question
+
+
