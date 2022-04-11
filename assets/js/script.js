@@ -1,17 +1,20 @@
 // HTML Targeting Variables
-classShow = document.querySelector(".show")
-classHidden = document.querySelector(".hidden")
-timeEl = document.querySelector("#timeRemaining")
-startButton = document.querySelector(".start")
-questionToAsk = document.querySelector(".question-section")
-choice1 = document.querySelector("#choice1")
-choice2 = document.querySelector("#choice2")
-choice3 = document.querySelector("#choice3")
-choice4 = document.querySelector("#choice4")
-clickedGuess = document.querySelector(".choice-section")
+var classShow = document.querySelector(".show")
+var classHidden = document.querySelector(".hidden")
+var timeEl = document.querySelector("#timeRemaining")
+var startButton = document.querySelector(".start")
+var questionToAsk = document.querySelector(".question-section")
+// choice1 = document.querySelector("#choice1")
+// choice2 = document.querySelector("#choice2")
+// choice3 = document.querySelector("#choice3")
+// choice4 = document.querySelector("#choice4")
+var clickedGuess = document.querySelector(".choice-section")
+var choicesEl = document.getElementById("choices");
+
 
 // Variables
-secondsLeft = 100;
+var secondsLeft = 100;
+var questionListIndex = 0;
 
 
 
@@ -73,31 +76,60 @@ function startGame() {
     goToHidden();
     goToShow();
     startTimer();
-    cylceQuestion();
+    // cylceQuestion();
+    getQuestion();
 }
 
-// Display Question and Answer
-function cylceQuestion() {
+// Display Question and Answers
+function getQuestion() {
+    var currentQuestion = questionList[questionListIndex];
+
     // Display Question
-    questionToAsk.textContent = questionList[0].title;
-    // Display Choices
-    choice1.textContent = questionList[0].choices[0];
-    choice2.textContent = questionList[0].choices[1];
-    choice3.textContent = questionList[0].choices[2];
-    choice4.textContent = questionList[0].choices[3];
+    questionToAsk = currentQuestion.title;
 
-    clickedGuess.onclick = checkAnswer
+    // Clear Choices
+    choicesEl.innerHTML = "";
+
+    // Loop choices
+    currentQuestion.choices.forEach(function(choice, i) {
+        // Create new choice button for each choice
+        var choiceNode = document.createElement("button");
+        choiceNode.setAttribute("class", "choice");
+        choiceNode.setAttribute("choice", choice);
+
+        choiceNode.textContent = choice;
+
+        // Display on page
+        choicesEl.appendChild(choiceNode)
+    });
 }
 
 
-    // Check if clicked is correct answer
-function checkAnswer() {
-    if (this.value === questionList[0].answer) {
-        console.log("you picked right")
-    } else {
-        console.log("you picked wrong")
-    }
-}
+
+
+
+    // // Display Question
+    // questionToAsk.textContent = questionList[0].title;
+    // // Display Choices
+    // choice1.textContent = questionList[0].choices[0];
+    // choice2.textContent = questionList[0].choices[1];
+    // choice3.textContent = questionList[0].choices[2];
+    // choice4.textContent = questionList[0].choices[3];
+
+
+
+//     clickedGuess.onclick = checkAnswer
+// }
+
+
+//     // Check if clicked is correct answer
+// function checkAnswer() {
+//     if (this.value === questionList[0].answer) {
+//         console.log("you picked right")
+//     } else {
+//         console.log("you picked wrong")
+//     }
+// }
 
 // Listen for click to start the game
 // Verified. Works

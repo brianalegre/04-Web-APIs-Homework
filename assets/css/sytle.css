@@ -23,13 +23,13 @@ body {
     
 }
 
-.button-grid {
+/* .button-grid {
     display: grid;
     grid-template-columns: repeat(2, auto);
     gap: 10px;
     margin: 20px 0;
 
-}
+} */
 
 .button {
     border-radius: 10px;
@@ -39,9 +39,9 @@ body {
     transform: perspective(1px) translateZ(0);
 }
 
-.button:hover {
+/* .button:hover {
     transform: scale(1.025);
-}
+} */
 
 .hidden {
     display: none;
