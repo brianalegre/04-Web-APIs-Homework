@@ -85,7 +85,7 @@ function getQuestion() {
     var currentQuestion = questionList[questionListIndex];
 
     // Display Question
-    questionToAsk = currentQuestion.title;
+    questionToAsk.textContent = currentQuestion.title;
 
     // Clear Choices
     choicesEl.innerHTML = "";

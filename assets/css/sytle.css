@@ -31,18 +31,27 @@ body {
 
 } */
 
-.button {
+/* .button {
     border-radius: 10px;
     border: 2px solid black;
     transition-duration: 0.3s;
     transition-property: transform;
     transform: perspective(1px) translateZ(0);
-}
-
-/* .button:hover {
-    transform: scale(1.025);
 } */
+
 
 .hidden {
     display: none;
+}
+
+.choice {
+    padding: 2%;
+    margin: 10px;
+    width: 20%;
+    cursor: pointer;
+
+}
+
+.start {
+    cursor: pointer;
 }
