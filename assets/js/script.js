@@ -22,7 +22,6 @@ var questionListIndex = 0;
 var questionList = [
     {
         title: "Who's that Pokemon?",
-        
         choices: ["Pikachu", "Bulbasaur", "Charmander", "Squirtle"],
         answer: "Pikachu"
     },
@@ -81,6 +80,8 @@ function startGame() {
 }
 
 // Display Question and Answers
+// Verified 1st question is display + Choices
+// Need to go onto second question
 function getQuestion() {
     var currentQuestion = questionList[questionListIndex];
 
@@ -96,8 +97,10 @@ function getQuestion() {
         var choiceNode = document.createElement("button");
         choiceNode.setAttribute("class", "choice");
         choiceNode.setAttribute("choice", choice);
-
         choiceNode.textContent = choice;
+
+        // Listen for Click
+        choiceNode.onclick = questionClicked
 
         // Display on page
         choicesEl.appendChild(choiceNode)
@@ -105,6 +108,24 @@ function getQuestion() {
 }
 
 
+function questionClicked() {
+    // Check is clicked is wrong
+    if (this.value !== questionList[questionListIndex].answer) {
+        // Minus 10 seconds of remaining time
+        secondsLeft -=10
+
+        // Display new time
+        timeEl.textContent = secondsLeft
+        console.log("answer is wrong")
+        console.log(this.value)
+        // Display Status
+
+    } else {
+        // Display Status
+        console.log("correct")
+        getQuestion()
+    }
+}
 
 
 
