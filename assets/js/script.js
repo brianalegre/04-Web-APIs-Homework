@@ -27,12 +27,12 @@ var questionList = [
     },
     {
         title: "Who's that Pokemon?",
-        choices: ["Pikachu", "Bulbasaur", "Charmander", "Squirtle"],
+        choices: ["Squirtle", "Squirtle", "Charmander", "Squirtle"],
         answer: "Charmander"
     },
     {
         title: "Who's that Pokemon?",
-        choices: ["Pikachu", "Bulbasaur", "Charmander", "Squirtle"],
+        choices: ["Charmander", "Charmander", "Charmander", "Squirtle"],
         answer: "Squirtle"
     },
     ];
@@ -92,19 +92,30 @@ function getQuestion() {
     choicesEl.innerHTML = "";
 
     // Loop choices
-    currentQuestion.choices.forEach(function(choice, i) {
+    currentQuestion.choices.forEach(function(choice) {
         // Create new choice button for each choice
         var choiceNode = document.createElement("button");
         choiceNode.setAttribute("class", "choice");
         choiceNode.setAttribute("choice", choice);
         choiceNode.textContent = choice;
 
-        // Listen for Click
-        choiceNode.onclick = questionClicked
+        // // Listen for Click
+        // choiceNode.onclick = questionClicked;
 
-        // Display on page
         choicesEl.appendChild(choiceNode)
+
+           // Listen for click
+    choiceNode.addEventListener("click", questionClicked)
+
     });
+
+    // {
+    //     if (event.target.getAttribute("choice") === currentQuestion.answer) {
+    //         alert("Correct!")
+    //     } else {
+    //         alert("Wrong!")
+    //     }
+    // }
 }
 
 
@@ -123,8 +134,11 @@ function questionClicked() {
     } else {
         // Display Status
         console.log("correct")
-        getQuestion()
+        
     }
+    // Increment questionListIndex
+    questionListIndex++
+    getQuestion()
 }
 
 
