@@ -99,8 +99,8 @@ function getQuestion() {
         choiceNode.setAttribute("choice", choice);
         choiceNode.textContent = choice;
 
-        // Listen for Click
-        choiceNode.onclick = questionClicked;
+        // // Listen for Click
+        // choiceNode.onclick = questionClicked;
 
         choicesEl.appendChild(choiceNode)
 
@@ -110,20 +110,18 @@ function getQuestion() {
     });
 
     // {
-        //     if (event.target.getAttribute("choice") === currentQuestion.answer) {
-            //         alert("Correct!")
-            //     } else {
-                //         alert("Wrong!")
-                //     }
-                // }
-            }
+    //     if (event.target.getAttribute("choice") === currentQuestion.answer) {
+    //         alert("Correct!")
+    //     } else {
+    //         alert("Wrong!")
+    //     }
+    // }
+}
+
+
 function questionClicked() {
     // Check is clicked is wrong
-    if (this.value === questionList[questionListIndex].answer) {
-        // Display Status
-        console.log("correct")
-        
-    } else {
+    if (this.value !== questionList[questionListIndex].answer) {
         // Minus 10 seconds of remaining time
         secondsLeft -=10
 
@@ -132,14 +130,16 @@ function questionClicked() {
         console.log("answer is wrong")
         console.log(this.value)
         // Display Status
+
+    } else {
+        // Display Status
+        console.log("correct")
         
     }
     // Increment questionListIndex
     questionListIndex++
     getQuestion()
 }
-            
-
 
 
 
