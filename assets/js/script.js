@@ -15,6 +15,7 @@ var choicesEl = document.getElementById("choices");
 // Variables
 var secondsLeft = 100;
 var questionListIndex = 0;
+// var currentQuestion;
 
 
 
@@ -98,73 +99,60 @@ function getQuestion() {
         choiceNode.setAttribute("class", "choice");
         choiceNode.setAttribute("choice", choice);
         choiceNode.textContent = choice;
-
-        // // Listen for Click
-        // choiceNode.onclick = questionClicked;
-
         choicesEl.appendChild(choiceNode)
+        questionClicked();
 
-           // Listen for click
-    choiceNode.addEventListener("click", questionClicked)
-
-    });
-
-    // {
-    //     if (event.target.getAttribute("choice") === currentQuestion.answer) {
-    //         alert("Correct!")
-    //     } else {
-    //         alert("Wrong!")
-    //     }
-    // }
-}
-
-
-function questionClicked() {
-    // Check is clicked is wrong
-    if (this.value !== questionList[questionListIndex].answer) {
-        // Minus 10 seconds of remaining time
-        secondsLeft -=10
-
-        // Display new time
-        timeEl.textContent = secondsLeft
-        console.log("answer is wrong")
-        console.log(this.value)
-        // Display Status
-
-    } else {
-        // Display Status
-        console.log("correct")
-        
-    }
-    // Increment questionListIndex
-    questionListIndex++
-    getQuestion()
+        // function questionClicked() {
+        //     choiceNode.onclick = function () {
+        //         if (this.value === currentQuestion.answer) {
+        //             console.log("correct")
+        //         } else {
+        //             console.log("incorrect")
+        //         }
+        //     }
+        //     // Increment questionListIndex
+        //     questionListIndex++
+        //     getQuestion()
+        // }
+    // choiceNode.addEventListener("click", questionClicked)
+});
 }
 
 
 
-    // // Display Question
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// // Display Question
     // questionToAsk.textContent = questionList[0].title;
     // // Display Choices
     // choice1.textContent = questionList[0].choices[0];
     // choice2.textContent = questionList[0].choices[1];
     // choice3.textContent = questionList[0].choices[2];
     // choice4.textContent = questionList[0].choices[3];
+    
 
 
 
-//     clickedGuess.onclick = checkAnswer
-// }
 
 
-//     // Check if clicked is correct answer
-// function checkAnswer() {
-//     if (this.value === questionList[0].answer) {
-//         console.log("you picked right")
-//     } else {
-//         console.log("you picked wrong")
-//     }
-// }
 
 // Listen for click to start the game
 // Verified. Works
@@ -181,4 +169,5 @@ startButton.onclick = startGame;
 // Verified. Works
 // goToHidden();       // Verified. Works
 // goToShow();         // Verified. Works
+
 
