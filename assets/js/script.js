@@ -125,7 +125,7 @@ function getQuestion() {
 
 // Inserting an image
 var img = document.createElement("img")
-img.setAttribute("src", "./assets/images/gPikachu.png");
+img.setAttribute("src", "./assets/images/Pokemon/006.jpg");
 imageEl.append(img)
 
 
