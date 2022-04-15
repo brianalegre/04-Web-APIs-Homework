@@ -99,26 +99,48 @@ function getQuestion() {
         choiceNode.setAttribute("class", "choice");
         choiceNode.setAttribute("choice", choice);
         choiceNode.textContent = choice;
-        choicesEl.appendChild(choiceNode)
-        questionClicked();
 
-        // function questionClicked() {
-        //     choiceNode.onclick = function () {
-        //         if (this.value === currentQuestion.answer) {
-        //             console.log("correct")
-        //         } else {
-        //             console.log("incorrect")
-        //         }
-        //     }
-        //     // Increment questionListIndex
-        //     questionListIndex++
-        //     getQuestion()
-        // }
-    // choiceNode.addEventListener("click", questionClicked)
-});
+        // // Listen for Click
+        // choiceNode.onclick = questionClicked;
+
+        choicesEl.appendChild(choiceNode)
+
+           // Listen for click
+    choiceNode.addEventListener("click", questionClicked)
+
+    });
+
+    // {
+    //     if (event.target.getAttribute("choice") === currentQuestion.answer) {
+    //         alert("Correct!")
+    //     } else {
+    //         alert("Wrong!")
+    //     }
+    // }
 }
 
 
+function questionClicked() {
+    // Check is clicked is wrong
+    if (this.value !== questionList[questionListIndex].answer) {
+        // Minus 10 seconds of remaining time
+        secondsLeft -=10
+
+        // Display new time
+        timeEl.textContent = secondsLeft
+        console.log("answer is wrong")
+        console.log(this.value)
+        // Display Status
+
+    } else {
+        // Display Status
+        console.log("correct")
+        
+    }
+    // Increment questionListIndex
+    questionListIndex++
+    getQuestion()
+}
 
 
 
