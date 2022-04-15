@@ -9,6 +9,7 @@
     <title> Pokémon | Guess who </title>
 </head>
 <body>
+    
     <!-- Default is to show this when page loads -->
     <!-- Use IDs to target, classes to show/hide -->
     <div id="start-menu" class="show">
@@ -25,14 +26,17 @@
 
     <!-- Default is to be hidden -->
     <div id="container" class="hidden"> 
-        <div class="picture"></div>
         <div class="title-section">
+            <div id=image> Insert Picture </div>
             <h2 class="question-section"> Ask your question</h2>
             <div id="options" class="options button"></div>
-            <div id="status" class="hidden"></div>
+            
         </div>
-        <!-- Timer -->
-        <div id="timer">Time Remaining: <span id="timeRemaining"></span></div>
+        <!-- Timer / Status -->
+        <div class="flex">
+            <div id="timer">Time Remaining: <span id="timeRemaining"></span></div>
+            <div id="status">Check Answer</div>
+        </div>
     </div>
 
     

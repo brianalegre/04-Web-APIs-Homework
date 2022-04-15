@@ -10,7 +10,7 @@ var questionToAsk = document.querySelector(".question-section")
 // choice4 = document.querySelector("#choice4")
 var clickedGuess = document.querySelector(".choice-section")
 var optionsEl = document.getElementById("options");
-
+var imageEl = document.getElementById("image")
 
 // Variables
 var secondsLeft = 100;
@@ -24,6 +24,7 @@ var questionList = [
     {
         title: "Who's that Pokemon?1",
         options: ["Pikachu", "Bulbasaur", "Charmander", "Squirtle"],
+        image: "./assets/images/gPikachu.png",
         answer: "Pikachu"
     },
     {
@@ -122,7 +123,10 @@ function getQuestion() {
 }
 
 
-
+// Inserting an image
+var img = document.createElement("img")
+img.setAttribute("src", "./assets/images/gPikachu.png");
+imageEl.append(img)
 
 
 

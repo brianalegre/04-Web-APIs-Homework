@@ -56,8 +56,17 @@ body {
     cursor: pointer;
 }
 
-#timer {
+.flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* #timer {
     text-align: left;
     margin-left: 10px 10px;
     padding-left: 10px;;
 }
+
+#status {
+    text-align: right;
+} */
