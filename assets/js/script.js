@@ -9,7 +9,7 @@ var questionToAsk = document.querySelector(".question-section")
 // choice3 = document.querySelector("#choice3")
 // choice4 = document.querySelector("#choice4")
 var clickedGuess = document.querySelector(".choice-section")
-var choicesEl = document.getElementById("choices");
+var optionsEl = document.getElementById("options");
 
 
 // Variables
@@ -19,21 +19,21 @@ var questionListIndex = 0;
 
 
 
-// List of all questions, choices, and answers
+// List of all questions, options, and answers
 var questionList = [
     {
-        title: "Who's that Pokemon?",
-        choices: ["Pikachu", "Bulbasaur", "Charmander", "Squirtle"],
+        title: "Who's that Pokemon?1",
+        options: ["Pikachu", "Bulbasaur", "Charmander", "Squirtle"],
         answer: "Pikachu"
     },
     {
-        title: "Who's that Pokemon?",
-        choices: ["Squirtle", "Squirtle", "Charmander", "Squirtle"],
+        title: "Who's that Pokemon?2",
+        options: ["Squirtle", "Squirtle", "Charmander", "Squirtle"],
         answer: "Charmander"
     },
     {
-        title: "Who's that Pokemon?",
-        choices: ["Charmander", "Charmander", "Charmander", "Squirtle"],
+        title: "Who's that Pokemon?3",
+        options: ["Charmander", "Charmander", "Charmander", "Squirtle"],
         answer: "Squirtle"
     },
     ];
@@ -80,69 +80,46 @@ function startGame() {
     getQuestion();
 }
 
-// Display Question and Answers
-// Verified 1st question is display + Choices
-// Need to go onto second question
+
+// Function for getting the questions, displaying question + options
 function getQuestion() {
     var currentQuestion = questionList[questionListIndex];
+    
+    // Clear Options
+    optionsEl.innerHTML = ""
+
 
     // Display Question
     questionToAsk.textContent = currentQuestion.title;
 
-    // Clear Choices
-    choicesEl.innerHTML = "";
+    // Display Options
+    // Loop thru array of answers
+    var options = currentQuestion.options;
+    for (var i = 0; i < options.length; i++) {
+        var option = options[i];
+        var button = document.createElement("button");
+        button.textContent = option;
 
-    // Loop choices
-    currentQuestion.choices.forEach(function(choice) {
-        // Create new choice button for each choice
-        var choiceNode = document.createElement("button");
-        choiceNode.setAttribute("class", "choice");
-        choiceNode.setAttribute("choice", choice);
-        choiceNode.textContent = choice;
+        // Check if Clicked is correct
+        button.addEventListener("click", function(event) {
+            var selectedOption = event.target.textContent;
 
-        // // Listen for Click
-        // choiceNode.onclick = questionClicked;
+            if (selectedOption === currentQuestion.answer) {
+                console.log("Got'em");  
+            } else {
+                console.log("Pokemon got away");
+                // Minus 10 seconds of remaining time
+                secondsLeft -=10;
+                timeEl.textContent = secondsLeft;
+            }
 
-        choicesEl.appendChild(choiceNode)
-
-           // Listen for click
-    choiceNode.addEventListener("click", questionClicked)
-
-    });
-
-    // {
-    //     if (event.target.getAttribute("choice") === currentQuestion.answer) {
-    //         alert("Correct!")
-    //     } else {
-    //         alert("Wrong!")
-    //     }
-    // }
-}
-
-
-function questionClicked() {
-    // Check is clicked is wrong
-    if (this.value !== questionList[questionListIndex].answer) {
-        // Minus 10 seconds of remaining time
-        secondsLeft -=10
-
-        // Display new time
-        timeEl.textContent = secondsLeft
-        console.log("answer is wrong")
-        console.log(this.value)
-        // Display Status
-
-    } else {
-        // Display Status
-        console.log("correct")
-        
+        // Go to next question
+        questionListIndex++
+        getQuestion();
+        })
+    optionsEl.append(button);
     }
-    // Increment questionListIndex
-    questionListIndex++
-    getQuestion()
 }
-
-
 
 
 
