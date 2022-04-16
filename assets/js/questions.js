@@ -303,7 +303,7 @@ var questionList = [
 
     {
         title: "Who's that Pokemon?",
-        options: ["Diglett", "Bulbasaur", "Charmander", "Squirtle"],
+        options: ["Diglett", "Bulbasaur", "Gloom", "Squirtle"],
         answer: "Gloom",
         image: "./assets/images/44-Gloom.jpg"
     },
