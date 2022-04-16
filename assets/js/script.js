@@ -21,10 +21,10 @@ var clearEl = document.getElementById("clear")
 var ulEl = document.querySelector("ul")
 
 // Variables
-var secondsLeft = 100;
+var secondsLeft = 300;
 var questionListIndex = 0;
 var score = 0;
-var timerInterval;
+// var timerInterval;
 var initials;
 var player = [];
 var finalScore;
@@ -81,11 +81,12 @@ function startTimer() {
     
         if(secondsLeft <= 0) {
         // Stops execution of action at set interval
-        clearInterval(timerInterval)
+        // clearInterval(timerInterval)
+        secondsLeft = 0;
         endGame();
         }
     // 1000ms / 1s for delay
-    }, 1000)
+    },1000);
 }
 
 // Start the Games once Start Quiz Button is clicked
@@ -106,8 +107,17 @@ function getQuestion() {
     // Clear Options
     optionsEl.innerHTML = ""
 
+    // Clear Image
+    imageEl.innerHTML = ""
+
     // Display Question
     questionToAsk.textContent = currentQuestion.title;
+
+    // Dispaly Pokemon Image
+    var picture = currentQuestion.image;
+    var img = document.createElement("img")
+    img.setAttribute("src", picture);
+    imageEl.append(img)
 
     // Display 0 Score
     scoreEl.textContent = score;
@@ -120,8 +130,6 @@ function getQuestion() {
         var button = document.createElement("button");
         button.textContent = option;
 
-
-        
         // Check if Clicked is correct
         button.addEventListener("click", function(event) {
             var selectedOption = event.target.textContent;
@@ -163,14 +171,15 @@ function getQuestion() {
 
 
 // Inserting an image
-var img = document.createElement("img")
-img.setAttribute("src", "./assets/images/1-Bulbasaur.jpg");
-imageEl.append(img)
+// var img = document.createElement("img")
+// img.setAttribute("src", "./assets/images/1-Bulbasaur.jpg");
+// imageEl.append(img)
 
 
 // Function for endgame;
 function endGame() {
     console.log("This is the end")
+    clearInterval(timerInterval)
     // Hide Questions
     containerEl.setAttribute("class", "hidden")
 
