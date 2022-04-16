@@ -1,6 +1,17 @@
 # 04-Web-APIs-Homework
 
+# Description
+Create a trivia Quiz, that asks questions, cycles through choices, saves the highscore and display the highscore. 
 
+
+# Site Preview
+<p align="center">
+    <img alt="Site Preview" src="./assets/images/SitePreview.png">
+</p>
+
+# Github Links
+- Repository: https://github.com/brianalegre/04-Web-APIs-Homework
+- Deployed: https://brianalegre.github.io/04-Web-APIs-Homework/
 
 # Criteria
 Click Start
@@ -22,7 +33,6 @@ Save High Score
 - Score
 
 
-
 # Notes and Articles
 Looping thru questions
  - https://www.youtube.com/watch?v=LQGTb112N_c
@@ -30,11 +40,8 @@ Looping thru questions
 Great explanation
  - https://www.youtube.com/watch?v=riDzcEQbX6k
 
-
-04-Web-API
 Change class with setAttribute
  - Activity 11-Ins_Event-Listener
-
 
 Main page shows
 - Some Text
