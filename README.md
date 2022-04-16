@@ -3,6 +3,8 @@
 # Description
 Create a trivia Quiz, that asks questions, cycles through choices, saves the highscore and display the highscore. 
 
+- Score is based on correct answer only.
+- Score may be in the negative range.
 
 # Site Preview
 <p align="center">
