@@ -17,12 +17,18 @@ var feedbackEl = document.getElementById("feedback")
 var containerEl = document.getElementById("container")
 var initialsEl = document.getElementById("initials");
 var submitEl = document.getElementById("submit")
+var clearEl = document.getElementById("clear")
+var ulEl = document.querySelector("ul")
 
 // Variables
 var secondsLeft = 100;
 var questionListIndex = 0;
 var score = 0;
 var timerInterval;
+var initials;
+var player = [];
+var finalScore;
+var playerIndex = 0;
 // var currentQuestion;
 
 
@@ -181,38 +187,44 @@ function endGame() {
     finalScoreEl.textContent = finalScore;
 }
 
-function saveHighScore() {
-    // Get value of input box
-    var initials = initialsEl.value.trim();
+// Next things to do:
+    // Save the highScore
+    // Display highScore
+    // Clear highScore
 
-    // Check if initials is empty
-    if (initials !== "") {
-      // Save highScore
-    var highScores =
-        JSON.parse(window.localStorage.getItem("highscores")) || [];
+// Save highScore
+    // Save Initials from textbox
+// function displayScores () {
+    
+//     // currentplayer = player[playerIndex]
+//     console.log(initials)
+//     // Render a new li for each player
+//     for (var i = 0; i < player.length; i++)
+//         var players = player[i];
 
-    // format new score object for current user
-    var newScore = {
-        score: score,
-        initials: initials
-    };
+//         // Create li elemenets for each palyer
+//         var li = document.createElement("li");
+//         li.textContent = players;
+//         li.setAttribute("data-index", i)
+//         ulEl.appendChild(li);
+// }
 
-      // save to localstorage
-    highScores.push(newScore);
-    window.localStorage.setItem("highscores", JSON.stringify(highScores));
-    }
-}
+// function saveScores () {
+//     localStorage.setItem("player", JSON.stringify(player));
+// }
 
-
-// Listen for Enter Key on highScore Section
-function checkForEnter(event) {
-    if (event.key === "Enter") {
-    saveHighScore();
-    }
-}
-
-
-
+// // Event Listen to Submit Button
+// submitEl.addEventListener("submit", function(event) {
+//     event.preventDefault();
+//     initials = initialsEl.value.trim()
+    
+//     // Check if initals is empty
+//     if (initials === "") {
+//         return
+//     }
+//     player.push(initials)
+    
+// });
 
 // // Display Question
     // questionToAsk.textContent = questionList[0].title;
@@ -224,14 +236,18 @@ function checkForEnter(event) {
     
 
 
+    
+    // user clicks button to submit initials
 
-// user clicks button to submit initials
-submitEl.onclick = saveHighScore;
-initialsEl.onkeyup = checkForEnter; 
+    // Listen for click
+    // clearEl.onclick = clearHighScores;
 
 // Listen for click to start the game
 // Verified. Works
 startButton.onclick = startGame;
+submitEl.onclick = saveHighScore;
+initialsEl.onkeyup = checkForEnter; 
+
 
 
 // Testing Functions area
@@ -245,4 +261,59 @@ startButton.onclick = startGame;
 // goToHidden();       // Verified. Works
 // goToShow();         // Verified. Works
 
+
+
+function saveHighScore() {
+    // Get value of input box
+    var initials = initialsEl.value.trim();
+
+    // Check if initials is empty
+    if (initials !== "") {
+      // Save highScore
+    var highScores = JSON.parse(window.localStorage.getItem("highScores")) || [];
+
+    // format new score object for current user
+    var newScore = {
+        score: score,
+        initials: initials
+    };
+
+      // save to localstorage
+    highScores.push(newScore);
+    window.localStorage.setItem("highScores", JSON.stringify(highScores));
+    }
+}
+
+// Listen for Enter Key on highScore Section
+function checkForEnter(event) {
+    if (event.key === "Enter") {
+    saveHighScore();
+    }
+}
+
+
+    // Get highScores from localStorage
+    var highScores = JSON.parse(window.localStorage.getItem("highScores")) || [];
+    console.log("hi" + highScores)
+    // sort highscores by score property in descending order
+    // highScores.sort(function(a, b) {
+    // return b.score - a.score;
+    // });
+
+    // create li tag for each high score
+    highScores.forEach(function() {
+        var liTag = document.createElement("li");
+        liTag.textContent = initials + " - " + score;
+
+    // display on page
+    var olEl = document.getElementById("highScores");
+    olEl.append(liTag);
+    });
+
+
+// Clear highScores
+function clearHighScores() {
+    window.localStorage.removeItem("highScores");
+    window.location.reload();
+}
 
