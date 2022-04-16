@@ -39,6 +39,7 @@ body {
 
 .start {
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .flex {
