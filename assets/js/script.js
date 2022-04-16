@@ -93,7 +93,7 @@ function startTimer() {
 function startGame() {
     goToHidden();
     goToShow();
-
+    startTimer();
     // cylceQuestion();
     getQuestion();
 }
@@ -101,7 +101,6 @@ function startGame() {
 
 // Function for getting the questions, displaying question + options
 function getQuestion() {
-    startTimer();
     var currentQuestion = questionList[questionListIndex];
     
     // Clear Options
