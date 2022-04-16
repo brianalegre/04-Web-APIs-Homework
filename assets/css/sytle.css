@@ -40,7 +40,8 @@ body {
 } */
 
 
-.hidden {
+.hidden, 
+.hide {
     display: none;
 }
 
@@ -49,6 +50,7 @@ body {
     margin: 20px 10px;
     width: 20%;
     cursor: pointer;
+    border-radius: 10px;
 
 }
 

@@ -1,6 +1,7 @@
 // HTML Targeting Variables
 var classShow = document.querySelector(".show")
 var classHidden = document.querySelector(".hidden")
+var classHide = document.querySelector(".hide")
 var timeEl = document.querySelector("#timeRemaining")
 var startButton = document.querySelector(".start")
 var questionToAsk = document.querySelector(".question-section")
@@ -13,11 +14,15 @@ var optionsEl = document.getElementById("options");
 var imageEl = document.getElementById("image")
 var scoreEl = document.getElementById("score")
 var feedbackEl = document.getElementById("feedback")
+var containerEl = document.getElementById("container")
+var initialsEl = document.getElementById("initials");
+var submitEl = document.getElementById("submit")
 
 // Variables
 var secondsLeft = 100;
 var questionListIndex = 0;
 var score = 0;
+var timerInterval;
 // var currentQuestion;
 
 
@@ -52,7 +57,7 @@ function goToHidden () {
 // Function for changing class from "hidden" to "show"
 // Verified. Works
 function goToShow () {
-    // Targetse a class with "Hidden"
+    // Targets a class with "Hidden"
     classHidden.setAttribute("class", "show")
 }
 
@@ -70,8 +75,7 @@ function startTimer() {
     
         if(secondsLeft <= 0) {
         // Stops execution of action at set interval
-        clearInterval(timerInterval);
-        // Go to endGame
+        clearInterval(timerInterval)
         endGame();
         }
     // 1000ms / 1s for delay
@@ -82,7 +86,7 @@ function startTimer() {
 function startGame() {
     goToHidden();
     goToShow();
-    startTimer();
+
     // cylceQuestion();
     getQuestion();
 }
@@ -90,6 +94,7 @@ function startGame() {
 
 // Function for getting the questions, displaying question + options
 function getQuestion() {
+    startTimer();
     var currentQuestion = questionList[questionListIndex];
     
     // Clear Options
@@ -136,7 +141,7 @@ function getQuestion() {
         // Go to next question
         questionListIndex++
 
-        // Check if there are any more questions
+        // Check if there are any more questions or time runs out
         if (questionListIndex >= questionList.length) {
             endGame();
         } else {
@@ -158,17 +163,53 @@ imageEl.append(img)
 // Function for endgame;
 function endGame() {
     console.log("This is the end")
+    // Hide Questions
+    containerEl.setAttribute("class", "hidden")
+
+    // Show the Highscore section
+    classHide.setAttribute("class", "show");
+
+    // Get the final score 
+    var finalScore = score;  
+        // Bug with secondsLeft being subtracted at the end when it reaches 0
+        // Removed secondsLeft for now
+
+    // Target Final Score
+    var finalScoreEl = document.getElementById("finalScore")
+    
+    // Display Final Score
+    finalScoreEl.textContent = finalScore;
+}
+
+function saveHighScore() {
+    // Get value of input box
+    var initials = initialsEl.value.trim();
+
+    // Check if initials is empty
+    if (initials !== "") {
+      // Save highScore
+    var highScores =
+        JSON.parse(window.localStorage.getItem("highscores")) || [];
+
+    // format new score object for current user
+    var newScore = {
+        score: score,
+        initials: initials
+    };
+
+      // save to localstorage
+    highScores.push(newScore);
+    window.localStorage.setItem("highscores", JSON.stringify(highScores));
+    }
 }
 
 
-
-
-
-
-
-
-
-
+// Listen for Enter Key on highScore Section
+function checkForEnter(event) {
+    if (event.key === "Enter") {
+    saveHighScore();
+    }
+}
 
 
 
@@ -184,8 +225,9 @@ function endGame() {
 
 
 
-
-
+// user clicks button to submit initials
+submitEl.onclick = saveHighScore;
+initialsEl.onkeyup = checkForEnter; 
 
 // Listen for click to start the game
 // Verified. Works
