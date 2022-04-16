@@ -196,7 +196,57 @@ function endGame() {
     
     // Display Final Score
     finalScoreEl.textContent = finalScore;
+
 }
+
+function saveHighscore() {
+    // get value of input box
+    var initials = initialsEl.value.trim();
+
+    // make sure value wasn't empty
+    if (initials !== "") {
+        // get saved scores from localstorage, or if not any, set to empty array
+        var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];
+
+        // format new score object for current user
+        var newScore = {
+        score: score,
+        initials: initials
+        };
+
+        // save to localstorage
+        highscores.push(newScore);
+        window.localStorage.setItem("highscores", JSON.stringify(highscores));
+
+        // redirect to next page
+        window.location.href = "highscores.html";
+    }
+    }
+
+    function checkForEnter(event) {
+    // "13" represents the enter key
+    if (event.key === "Enter") {
+        saveHighscore();
+    }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Next things to do:
     // Save the highScore
@@ -256,7 +306,7 @@ function endGame() {
 // Listen for click to start the game
 // Verified. Works
 startButton.onclick = startGame;
-submitEl.onclick = saveHighScore;
+submitEl.onclick = saveHighscore;
 initialsEl.onkeyup = checkForEnter; 
 
 
@@ -274,57 +324,58 @@ initialsEl.onkeyup = checkForEnter;
 
 
 
-function saveHighScore() {
-    // Get value of input box
-    var initials = initialsEl.value.trim();
+// function saveHighScore() {
+//     // Get value of input box
+//     var initials = initialsEl.value.trim();
 
-    // Check if initials is empty
-    if (initials !== "") {
-      // Save highScore
-    var highScores = JSON.parse(window.localStorage.getItem("highScores")) || [];
+//     // Check if initials is empty
+//     if (initials !== "") {
+//       // Save highScore
+//     var highScores = JSON.parse(window.localStorage.getItem("highScores")) || [];
 
-    // format new score object for current user
-    var newScore = {
-        score: score,
-        initials: initials
-    };
+//     // format new score object for current user
+//     var newScore = {
+//         score: score,
+//         initials: initials
+//     };
 
-      // save to localstorage
-    highScores.push(newScore);
-    window.localStorage.setItem("highScores", JSON.stringify(highScores));
-    }
-}
+//       // save to localstorage
+//     highScores.push(newScore);
+//     window.localStorage.setItem("highScores", JSON.stringify(highScores));
+//     }
+// }
 
-// Listen for Enter Key on highScore Section
-function checkForEnter(event) {
-    if (event.key === "Enter") {
-    saveHighScore();
-    }
-}
+// // Listen for Enter Key on highScore Section
+// function checkForEnter(event) {
+//     if (event.key === "Enter") {
+//     saveHighScore();
+//     }
+// }
 
+//     // Get highScores from localStorage
+// function displayHighScores() {
+//   // either get scores from localstorage or set to empty array
+//   var highScores = JSON.parse(window.localStorage.getItem("highScores")) || [];
 
-    // // Get highScores from localStorage
-    // var highScores = JSON.parse(window.localStorage.getItem("highScores")) || [];
-    // console.log("hi" + highScores)
-    // // sort highscores by score property in descending order
-    // // highScores.sort(function(a, b) {
-    // // return b.score - a.score;
-    // // });
+//   // sort highscores by score property in descending order
+//   highScores.sort(function(a, b) {
+//     return b.score - a.score;
+//   });
 
-    // // create li tag for each high score
-    // highScores.forEach(function() {
-    //     var liTag = document.createElement("li");
-    //     liTag.textContent = initials + " - " + score;
+//   highScores.forEach(function(score) {
+//     // create li tag for each high score
+//     var liTag = document.createElement("li");
+//     liTag.textContent = score.initials + " - " + score.score;
 
-    // // display on page
-    // var ulEl = document.getElementById("highScores");
-    // ulEl.append(liTag);
-    // });
+//     // display on page
+//     var olEl = document.getElementById("highScores");
+//     olEl.appendChild(liTag);
+//   });
+// }
 
-
-// Clear highScores
-function clearHighScores() {
-    window.localStorage.removeItem("highScores");
-    window.location.reload();
-}
+// // Clear highScores
+// function clearHighScores() {
+//     window.localStorage.removeItem("highScores");
+//     window.location.reload();
+// }
 
