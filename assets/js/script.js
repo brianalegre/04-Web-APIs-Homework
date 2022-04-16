@@ -11,10 +11,12 @@ var questionToAsk = document.querySelector(".question-section")
 var clickedGuess = document.querySelector(".choice-section")
 var optionsEl = document.getElementById("options");
 var imageEl = document.getElementById("image")
+var scoreEl = document.getElementById("score")
 
 // Variables
 var secondsLeft = 100;
 var questionListIndex = 0;
+var score = 0;
 // var currentQuestion;
 
 
@@ -22,18 +24,18 @@ var questionListIndex = 0;
 // List of all questions, options, and answers
 var questionList = [
     {
-        title: "Who's that Pokemon?1",
+        title: "Who's that Pokemon?",
         options: ["Pikachu", "Bulbasaur", "Charmander", "Squirtle"],
         image: "./assets/images/gPikachu.png",
         answer: "Pikachu"
     },
     {
-        title: "Who's that Pokemon?2",
+        title: "Who's that Pokemon?",
         options: ["Squirtle", "Squirtle", "Charmander", "Squirtle"],
         answer: "Charmander"
     },
     {
-        title: "Who's that Pokemon?3",
+        title: "Who's that Pokemon?",
         options: ["Charmander", "Charmander", "Charmander", "Squirtle"],
         answer: "Squirtle"
     },
@@ -89,9 +91,11 @@ function getQuestion() {
     // Clear Options
     optionsEl.innerHTML = ""
 
-
     // Display Question
     questionToAsk.textContent = currentQuestion.title;
+
+    // Display 0 Score
+    scoreEl.textContent = score;
 
     // Display Options
     // Loop thru array of answers
@@ -106,12 +110,22 @@ function getQuestion() {
             var selectedOption = event.target.textContent;
 
             if (selectedOption === currentQuestion.answer) {
-                console.log("Got'em");  
+                console.log("Got'em"); 
+
+                // Plus 10 points to score
+                score += 10;
+                scoreEl.textContent = score; 
+
             } else {
                 console.log("Pokemon got away");
+
                 // Minus 10 seconds of remaining time
                 secondsLeft -=10;
                 timeEl.textContent = secondsLeft;
+
+                // Minus 5 from score
+                score -= 5;
+                scoreEl.textContent = score;
             }
 
         // Go to next question
