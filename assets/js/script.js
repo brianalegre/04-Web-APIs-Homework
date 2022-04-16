@@ -21,7 +21,7 @@ var clearEl = document.getElementById("clear")
 var ulEl = document.querySelector("ul")
 
 // Variables
-var secondsLeft = 300;
+var secondsLeft = 100;
 var questionListIndex = 0;
 var score = 0;
 // var timerInterval;
@@ -81,8 +81,8 @@ function startTimer() {
     
         if(secondsLeft <= 0) {
         // Stops execution of action at set interval
-        // clearInterval(timerInterval)
-        secondsLeft = 0;
+        clearInterval(timerInterval)
+        // secondsLeft = 0;
         endGame();
         }
     // 1000ms / 1s for delay
@@ -179,7 +179,7 @@ function getQuestion() {
 // Function for endgame;
 function endGame() {
     console.log("This is the end")
-    clearInterval(timerInterval)
+    // clearInterval(timerInterval)
     // Hide Questions
     containerEl.setAttribute("class", "hidden")
 
