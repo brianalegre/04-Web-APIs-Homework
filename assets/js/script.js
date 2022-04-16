@@ -103,7 +103,6 @@ function getQuestion() {
         button.addEventListener("click", function(event) {
             var selectedOption = event.target.textContent;
             if (selectedOption === currentQuestion.answer) {
-                console.log("Got'em"); 
 
                 // Plus 10 points to score
                 score += 10;
@@ -111,7 +110,6 @@ function getQuestion() {
                 feedbackEl.textContent = "Correct!"
 
             } else {
-                console.log("Pokemon got away");
 
                 // Minus 10 seconds of remaining time
                 secondsLeft -=10;
@@ -141,7 +139,6 @@ function getQuestion() {
 
 // Function for ending the game
 function endGame() {
-    console.log("This is the end")
     // clearInterval(timerInterval)
     // Hide Questions
     containerEl.setAttribute("class", "hidden")
