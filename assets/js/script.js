@@ -12,6 +12,7 @@ var clickedGuess = document.querySelector(".choice-section")
 var optionsEl = document.getElementById("options");
 var imageEl = document.getElementById("image")
 var scoreEl = document.getElementById("score")
+var feedbackEl = document.getElementById("feedback")
 
 // Variables
 var secondsLeft = 100;
@@ -67,7 +68,7 @@ function startTimer() {
         // Push seconds to timeEl
         timeEl.textContent = secondsLeft;
     
-        if(secondsLeft === 0) {
+        if(secondsLeft <= 0) {
         // Stops execution of action at set interval
         clearInterval(timerInterval);
         // Go to endGame
@@ -117,6 +118,7 @@ function getQuestion() {
                 // Plus 10 points to score
                 score += 10;
                 scoreEl.textContent = score; 
+                feedbackEl.textContent = "Correct!"
 
             } else {
                 console.log("Pokemon got away");
@@ -128,6 +130,7 @@ function getQuestion() {
                 // Minus 5 from score
                 score -= 5;
                 scoreEl.textContent = score;
+                feedbackEl.textContent = "Wrong!"
             }
 
         // Go to next question
