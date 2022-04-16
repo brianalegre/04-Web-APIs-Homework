@@ -69,9 +69,12 @@ function startTimer() {
     
         if(secondsLeft === 0) {
         // Stops execution of action at set interval
-        clearInterval(timerInterval);}
+        clearInterval(timerInterval);
+        // Go to endGame
+        endGame();
+        }
     // 1000ms / 1s for delay
-    }, 1000)
+    }, 100)
 }
 
 // Start the Games once Start Quiz Button is clicked
@@ -108,7 +111,6 @@ function getQuestion() {
         // Check if Clicked is correct
         button.addEventListener("click", function(event) {
             var selectedOption = event.target.textContent;
-
             if (selectedOption === currentQuestion.answer) {
                 console.log("Got'em"); 
 
@@ -130,7 +132,14 @@ function getQuestion() {
 
         // Go to next question
         questionListIndex++
-        getQuestion();
+
+        // Check if there are any more questions
+        if (questionListIndex >= questionList.length) {
+            endGame();
+        } else {
+            getQuestion();
+        }
+        
         })
     optionsEl.append(button);
     }
@@ -143,6 +152,10 @@ img.setAttribute("src", "./assets/images/1-Bulbasaur.jpg");
 imageEl.append(img)
 
 
+// Function for endgame;
+function endGame() {
+    console.log("This is the end")
+}
 
 
 
