@@ -33,25 +33,25 @@ var playerIndex = 0;
 
 
 
-// List of all questions, options, and answers
-var questionList = [
-    {
-        title: "Who's that Pokemon?",
-        options: ["Pikachu", "Bulbasaur", "Charmander", "Squirtle"],
-        image: "./assets/images/gPikachu.png",
-        answer: "Pikachu"
-    },
-    {
-        title: "Who's that Pokemon?",
-        options: ["Squirtle", "Squirtle", "Charmander", "Squirtle"],
-        answer: "Charmander"
-    },
-    {
-        title: "Who's that Pokemon?",
-        options: ["Charmander", "Charmander", "Charmander", "Squirtle"],
-        answer: "Squirtle"
-    },
-    ];
+// // List of all questions, options, and answers
+// var questionList = [
+//     {
+//         title: "Who's that Pokemon?",
+//         options: ["Pikachu", "Bulbasaur", "Charmander", "Squirtle"],
+//         image: "./assets/images/gPikachu.png",
+//         answer: "Pikachu"
+//     },
+//     {
+//         title: "Who's that Pokemon?",
+//         options: ["Squirtle", "Squirtle", "Charmander", "Squirtle"],
+//         answer: "Charmander"
+//     },
+//     {
+//         title: "Who's that Pokemon?",
+//         options: ["Charmander", "Charmander", "Charmander", "Squirtle"],
+//         answer: "Squirtle"
+//     },
+//     ];
 
 // Function for changing class from "hidden" to "show"
 // Verified. Works
@@ -85,7 +85,7 @@ function startTimer() {
         endGame();
         }
     // 1000ms / 1s for delay
-    }, 100)
+    }, 1000)
 }
 
 // Start the Games once Start Quiz Button is clicked
@@ -120,6 +120,8 @@ function getQuestion() {
         var button = document.createElement("button");
         button.textContent = option;
 
+
+        
         // Check if Clicked is correct
         button.addEventListener("click", function(event) {
             var selectedOption = event.target.textContent;
@@ -292,23 +294,23 @@ function checkForEnter(event) {
 }
 
 
-    // Get highScores from localStorage
-    var highScores = JSON.parse(window.localStorage.getItem("highScores")) || [];
-    console.log("hi" + highScores)
-    // sort highscores by score property in descending order
-    // highScores.sort(function(a, b) {
-    // return b.score - a.score;
+    // // Get highScores from localStorage
+    // var highScores = JSON.parse(window.localStorage.getItem("highScores")) || [];
+    // console.log("hi" + highScores)
+    // // sort highscores by score property in descending order
+    // // highScores.sort(function(a, b) {
+    // // return b.score - a.score;
+    // // });
+
+    // // create li tag for each high score
+    // highScores.forEach(function() {
+    //     var liTag = document.createElement("li");
+    //     liTag.textContent = initials + " - " + score;
+
+    // // display on page
+    // var ulEl = document.getElementById("highScores");
+    // ulEl.append(liTag);
     // });
-
-    // create li tag for each high score
-    highScores.forEach(function() {
-        var liTag = document.createElement("li");
-        liTag.textContent = initials + " - " + score;
-
-    // display on page
-    var olEl = document.getElementById("highScores");
-    olEl.append(liTag);
-    });
 
 
 // Clear highScores
