@@ -16,7 +16,7 @@ var questionList = [
 
     {
         title: "Who's that Pokemon?",
-        options: ["quotes", "Ivysaur", "Venomoth", "Venusaur"],
+        options: ["Bulbasaur", "Ivysaur", "Venomoth", "Venusaur"],
         answer: "Venusaur",
         image: "./assets/images/3-Venusaur.jpg"
     },
