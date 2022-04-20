@@ -24,6 +24,7 @@ var initials;
 var player = [];
 var finalScore;
 var playerIndex = 0;
+var timerInterval;
 
 
 // Function for changing class from "hidden" to "show"
@@ -41,30 +42,24 @@ function goToShow () {
 
 // Timer Function
 function startTimer() {
-    // Sets interval in variable
-    var timerInterval = setInterval(function() {
         // Minus 1 second
         secondsLeft--;
         // Push seconds to timeEl
         timeEl.textContent = secondsLeft;
     
         if(secondsLeft <= 0) {
-        // Stops execution of action at set interval
-        clearInterval(timerInterval)
-        // secondsLeft = 0;
         endGame();
         }
-    // 1000ms / 1s for delay
-    },1000);
 }
 
 
 // Start the Games once Start Quiz Button is clicked
 function startGame() {
+    // Sets interval in variable
+    // 1000ms / 1s for delay
+    timerInterval = setInterval(startTimer, 1000)
     goToHidden();
     goToShow();
-    startTimer();
-    // cylceQuestion();
     getQuestion();
 }
 
@@ -139,6 +134,7 @@ function getQuestion() {
 
 // Function for ending the game
 function endGame() {
+    clearInterval(timerInterval)
     // clearInterval(timerInterval)
     // Hide Questions
     containerEl.setAttribute("class", "hidden")

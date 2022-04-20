@@ -30,3 +30,4 @@ document.getElementById("clear").onclick = clearHighscores;
 
 // Run function on page load
 displayHighscores();
+
